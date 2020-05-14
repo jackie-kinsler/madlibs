@@ -49,8 +49,17 @@ def show_madlib_form():
 
     return render_template("game.html")
 
+@app.route('/madlib')
+def show_madlib():
+    """Show the madlib result given the users inputs in game.html"""
 
+    color = request.args.get("color")
+    noun = request.args.get("noun")
+    adjective = request.args.get("adjective")
+    person = request.args.get("person")
 
+    return render_template("madlib.html", color = color, noun = noun, 
+                                          person = person, adjective = adjective)
 
 
 
