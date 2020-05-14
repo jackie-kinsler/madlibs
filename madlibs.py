@@ -21,13 +21,11 @@ def start_here():
 
     return "Hi! This is the home page."
 
-
 @app.route('/hello')
 def say_hello():
     """Say hello to user."""
 
     return render_template("hello.html")
-
 
 @app.route('/greet')
 def greet_person():
@@ -40,6 +38,21 @@ def greet_person():
     return render_template("compliment.html",
                            person=player,
                            compliment=compliment)
+
+@app.route('/game')
+def show_madlib_form():
+    """Show form if they click the yes radio button on /."""
+    answer = request.args.get("yes")
+
+    if answer == None:
+        return render_template("goodbye.html")
+
+    return render_template("game.html")
+
+
+
+
+
 
 
 if __name__ == '__main__':
