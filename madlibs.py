@@ -57,8 +57,17 @@ def show_madlib():
     noun = request.args.get("noun")
     adjective = request.args.get("adjective")
     person = request.args.get("person")
+    yell = request.args.get("yell")
+    if yell == "yes":
+        color = color.upper()
+        noun = noun.upper()
+        adjective = adjective.upper()
+        person = person.upper()
 
-    return render_template("madlib.html", color = color, noun = noun, 
+    madlib = choice(["madlib1.html", "madlib2.html", 
+                     "madlib3.html", "madlib4.html"])
+
+    return render_template(madlib, color = color, noun = noun, 
                                           person = person, adjective = adjective)
 
 
